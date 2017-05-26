@@ -5,11 +5,14 @@
       - DJANGO=1.11
     install:
       - pip install -r backend/pima/requirements.txt
+      - pip install coveralls
     before_script:
       - cd backend/pima
       - python manage.py migrate
     script:
-      - python manage.py test
+      - coverage run --'.' manage.py test
+    after_success:
+      - coveralls
 
     notifications:
       slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
