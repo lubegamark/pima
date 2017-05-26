@@ -4,9 +4,12 @@
     env:
       - DJANGO=1.11
     install:
-      - pip install -r requirements.txt
+      - pip install -r backend/pima/requirements.txt
     before_script:
       - cd backend
       - python manage.py migrate
     script:
       - python manage.py test
+
+    notifications:
+      slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
