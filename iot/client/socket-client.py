@@ -25,7 +25,6 @@ def on_open(ws):
             print data
             ws.send(data)
         time.sleep(1)
-        #ws.close()
         print "thread terminating..."
     thread.start_new_thread(run, ())
 
@@ -33,8 +32,8 @@ def on_open(ws):
 if __name__ == "__main__":
     websocket.enableTrace(True)
     ws = websocket.WebSocketApp("ws://127.0.0.1:8000/device/dev1/stream/",
-                              on_message = on_message,
-                              on_error = on_error,
-                              on_close = on_close)
+                                on_message=on_message,
+                                on_error=on_error,
+                                on_close=on_close)
     ws.on_open = on_open
     ws.run_forever()
