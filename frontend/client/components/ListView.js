@@ -11,11 +11,12 @@ export default class ListViewSample extends React.Component {
     };
   }
 
+  renderItem = () => <ListItem />
   render() {
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(rowData) => <ListItem />}
+        renderRow={this.renderItem}
       />
     );
   }
