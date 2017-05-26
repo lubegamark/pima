@@ -1,3 +1,5 @@
+matrix:
+  include:
     language: python
     python:
       - "2.7"
@@ -13,6 +15,15 @@
       - coverage run --source='.' manage.py test
     after_success:
       - coveralls
+  include:
+    language: node_js
+    node_js:
+      - '5.0.0'
+    install:
+      - cd frontend
+      - npm install
+    script:
+      - npm run test-coverage
 
-    notifications:
-      slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
+  notifications:
+    slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
