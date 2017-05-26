@@ -10,7 +10,7 @@
       - cd backend/pima
       - python manage.py migrate
     script:
-      - coverage run --'.' manage.py test
+      - coverage run --source='.' manage.py test
     after_success:
       - coveralls
 
