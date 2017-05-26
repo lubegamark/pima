@@ -25,9 +25,6 @@ matrix:
     script:
       - npm run test-coverage
       - npm run lint
-    after_success:
-      - npm run coveralls
-
 
   notifications:
     slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
