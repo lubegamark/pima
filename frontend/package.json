@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "test-coverage": "jest --coverage --coverageReporters=lcov "
+    "test-coverage": "jest --coverage --coverageReporters=lcov ",
     "lint": "eslint client",
     "lint:fix": "eslint --fix client"
   },
