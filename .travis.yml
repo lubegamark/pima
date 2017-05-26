@@ -25,5 +25,5 @@ matrix:
     script:
       - npm run test-coverage
 
-  notifications:
-    slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
+notifications:
+  slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
