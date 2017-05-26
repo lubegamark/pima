@@ -1,3 +1,7 @@
-/**
- * Created by kraiba on 27/05/2017.
- */
+import api from './api';
+import readings from './readings';
+
+export {
+  api,
+  readings,
+};
