@@ -6,7 +6,7 @@
     install:
       - pip install -r backend/pima/requirements.txt
     before_script:
-      - cd backend
+      - cd backend/pima
       - python manage.py migrate
     script:
       - python manage.py test
