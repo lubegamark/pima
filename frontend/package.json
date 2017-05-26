@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "lint": "eslint client",
-    "lint:fix": "eslint --fix app"
+    "lint:fix": "eslint --fix client"
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",

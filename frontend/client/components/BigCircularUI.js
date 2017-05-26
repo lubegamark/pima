@@ -3,33 +3,6 @@ import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import {Text, StyleSheet, View} from 'react-native';
 import {colors, fontSize} from '../config/styles';
 
-export default class BigCircularUI extends React.Component {
-
-
-  render() {
-    return (
-
-      <AnimatedCircularProgress
-        size={150}
-        width={15}
-        fill={this.props.percentage}
-        tintColor={this.props.color}
-        backgroundColor={colors.grey}
-      >
-        {
-                    (fill) => (
-                      <View style={styles.textContainerBigCircle}>
-                        <Text style={styles.pointsBigCircle}>10</Text>
-                        <Text style={styles.textBigCircle}>CURRENT</Text>
-                      </View>
-                    )
-                }
-      </AnimatedCircularProgress>
-
-    );
-  }
-
-}
 const styles = StyleSheet.create({
   textContainerBigCircle: {
     flexDirection: 'column',
@@ -53,3 +26,27 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
 });
+
+const BigCircularUI = () =>
+
+
+  <AnimatedCircularProgress
+    size={150}
+    width={15}
+    fill={this.props.percentage}
+    tintColor={this.props.color}
+    backgroundColor={colors.grey}
+  >
+    {
+                    (fill) => (
+                      <View style={styles.textContainerBigCircle}>
+                        <Text style={styles.pointsBigCircle}>10</Text>
+                        <Text style={styles.textBigCircle}>CURRENT</Text>
+                      </View>
+                    )
+                }
+  </AnimatedCircularProgress>;
+
+
+export default BigCircularUI;
+
