@@ -1,5 +1,7 @@
 import React from 'react';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import {Text,StyleSheet,View} from 'react-native';
+import {colors,fontSize} from '../config/styles';
 
 export default class BigCircularUI extends React.Component {
 
@@ -8,16 +10,61 @@ export default class BigCircularUI extends React.Component {
 
         return (
 
-            <View>
-                <AnimatedCircularProgress
-                    size={120}
-                    width={15}
-                    fill={100}
-                    tintColor="#00e0ff"
-                    backgroundColor="#3d5875"/>
-            </View>
+            <AnimatedCircularProgress
+                size={150}
+                width={15}
+                fill={this.props.percentage}
+                tintColor={this.props.color}
+                backgroundColor={colors.grey}>
+                {
+                    (fill) => (
+                        <View style={styles.textContainerBigCircle}>
+                            <Text style={styles.pointsBigCircle}>10</Text>
+                            <Text style={styles.textBigCircle}>CURRENT</Text>
+                        </View>
+                    )
+                }
+            </AnimatedCircularProgress>
 
         );
     }
 
 }
+const styles = StyleSheet.create({
+    textContainerBigCircle:{
+      flexDirection:'column',
+        left: 30,
+        width: 90,
+        position: 'absolute',
+        top: 36,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    pointsBigCircle: {
+        backgroundColor: 'transparent',
+        textAlign: 'center',
+        fontSize:fontSize.veryBig,
+        fontWeight: 'bold'
+    },
+    textBigCircle: {
+        backgroundColor: 'transparent',
+        textAlign: 'center',
+        fontSize:fontSize.medium,
+        fontWeight: "300"
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#152d44',
+        padding: 50
+    },
+    pointsDelta: {
+        color: '#4c6479',
+        fontSize: 50,
+        fontWeight: "100"
+    },
+    pointsDeltaActive: {
+        color: '#fff',
+    }
+});
