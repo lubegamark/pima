@@ -1,5 +1,5 @@
 import React from 'react';
-import {BigCircularUI, SmallCircularUI,ListItem} from '../components';
+import {BigCircularUI, SmallCircularUI,ListView} from '../components';
 import {View, StyleSheet} from 'react-native';
 import {colors} from '../config/styles';
 export default class Main extends React.Component {
@@ -24,7 +24,7 @@ export default class Main extends React.Component {
                     />
 
                 </View>
-                <ListItem/>
+                <ListView/>
 
             </View>
 
@@ -35,13 +35,12 @@ export default class Main extends React.Component {
 
 const styles = StyleSheet.create({
     topContainerView: {
-        paddingLeft: 16,
-        paddingRight: 16,
+        paddingLeft: 32,
+        paddingRight: 32,
+        paddingTop: 32,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: '#d6d7da',
+
     }
 });
