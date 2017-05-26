@@ -1,5 +1,6 @@
 import React from 'react';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import {View} from 'react-native';
 
 export default class Main extends React.Component {
 
@@ -9,7 +10,12 @@ export default class Main extends React.Component {
         return (
 
             <View>
-                <Text>{this.props.message}</Text>
+                <AnimatedCircularProgress
+                    size={120}
+                    width={15}
+                    fill={100}
+                    tintColor="#00e0ff"
+                    backgroundColor="#3d5875"/>
             </View>
 
         );
