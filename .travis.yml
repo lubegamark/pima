@@ -14,7 +14,7 @@ matrix:
     script:
       - coverage run --source='.' manage.py test
     after_success:
-      - npm run coveralls
+      - coveralls
   include:
     language: node_js
     node_js:
@@ -25,7 +25,7 @@ matrix:
     script:
       - npm run test-coverage
     after_success:
-      - coveralls
+      - npm run coveralls
 
 
   notifications:
