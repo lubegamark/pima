@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   mainText: {
     textAlign: 'right',
-    fontSize: fontSize.veryBig,
+    fontSize: fontSize.big,
     fontWeight: 'bold',
     alignSelf: 'flex-end',
   },

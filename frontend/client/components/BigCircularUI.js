@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const BigCircularUI = () =>
+const BigCircularUI = (props) =>
 
 
   <AnimatedCircularProgress
     size={150}
     width={15}
-    fill={this.props.percentage}
-    tintColor={this.props.color}
+    fill={props.percentage}
+    tintColor={props.color}
     backgroundColor={colors.grey}
   >
     {
