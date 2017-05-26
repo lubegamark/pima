@@ -51,20 +51,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize:fontSize.medium,
         fontWeight: "300"
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#152d44',
-        padding: 50
-    },
-    pointsDelta: {
-        color: '#4c6479',
-        fontSize: 50,
-        fontWeight: "100"
-    },
-    pointsDeltaActive: {
-        color: '#fff',
     }
 });
