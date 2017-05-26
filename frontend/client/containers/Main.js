@@ -1,46 +1,51 @@
 import React from 'react';
-import {BigCircularUI, SmallCircularUI,ListView} from '../components';
 import {View, StyleSheet} from 'react-native';
+import {BigCircularUI, SmallCircularUI, ListView} from '../components';
 import {colors} from '../config/styles';
+
+const styles = StyleSheet.create({
+  topContainerView: {
+    paddingLeft: 32,
+    paddingRight: 32,
+    paddingTop: 32,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+  },
+});
+
 export default class Main extends React.Component {
 
-    render() {
+  componentWillMount() {
 
-        return (
+  }
 
-            <View>
-                <View style={styles.topContainerView}>
-                    <SmallCircularUI
-                        color={colors.primary}
-                        percentage={40}
-                    />
-                    <BigCircularUI
-                        color={colors.secondaryDark}
-                        percentage={60}
-                    />
-                    <SmallCircularUI
-                        color={colors.secondary}
-                        percentage={40}
-                    />
+  render() {
+    return (
 
-                </View>
-                <ListView/>
+      <View>
+        <View style={styles.topContainerView}>
+          <SmallCircularUI
+            color={colors.primary}
+            percentage={40}
+          />
+          <BigCircularUI
+            color={colors.secondaryDark}
+            percentage={60}
+          />
+          <SmallCircularUI
+            color={colors.secondary}
+            percentage={40}
+          />
 
-            </View>
+        </View>
+        <ListView />
 
-        );
-    }
+      </View>
+
+    );
+  }
 
 }
 
-const styles = StyleSheet.create({
-    topContainerView: {
-        paddingLeft: 32,
-        paddingRight: 32,
-        paddingTop: 32,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-
-    }
-});
