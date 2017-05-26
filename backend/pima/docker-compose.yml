@@ -3,14 +3,24 @@ services:
   nginx:
     image: nginx:1.13.0 
     container_name: nginx-1
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src
+      - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
   web:
     build: .
     container_name: django-1
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn pima.wsgi -b 0.0.0.0:8000"
     depends_on:
       - db
       - redis
+    volumes:
+      - ./src:/src
+    expose:
+      - "8000"
   db:
     image: postgres:9.6.3
     container_name: postgres-1
