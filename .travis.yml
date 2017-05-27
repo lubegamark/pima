@@ -21,6 +21,7 @@ install:
   - npm install
 before_script:
   - cd ../backend/pima
+  - psql -c 'create database test;' -U postgres
   - python manage.py migrate
 script:
   - coverage run --source='.' manage.py test --settings=pima.settings.test
