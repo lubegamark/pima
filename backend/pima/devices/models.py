@@ -2,6 +2,7 @@ import json
 
 from channels import Group
 from django.db import models
+from django.utils.text import slugify
 from pima.models import BaseModel
 
 
@@ -13,6 +14,11 @@ class Device(BaseModel):
     latitude = models.DecimalField(max_digits=20, decimal_places=10)
     longitude = models.DecimalField(max_digits=20, decimal_places=10)
     slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Device, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
