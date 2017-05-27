@@ -1,30 +1,30 @@
-matrix:
-  include:
-    language: python
-    python:
-      - "2.7"
-    env:
-      - DJANGO=1.11
-    install:
-      - pip install -r backend/pima/requirements.txt
-      - pip install coveralls
-    before_script:
-      - cd backend/pima
-      - python manage.py migrate
-    script:
-      - coverage run --source='.' manage.py test --settings=pima.settings.test
-    after_success:
-      - coveralls
-      - bash .travis/deploy.sh
-  include:
-    language: node_js
-    node_js:
-      - '5.0.0'
-    install:
-      - cd frontend
-      - npm install
-    script:
-      - npm run test-coverage
-      - npm run lint
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - '5.0.0'
+python:
+  - "2.7"
+before_install:
+  - sudo apt-get -y install python3-pip python-dev
+  - sudo pip3 install -U setuptools
+  - sudo pip3 install -U virtualenvwrapper
+install:
+  - pip install -r backend/pima/requirements.txt
+  - pip install coveralls
+  - cd frontend
+  - npm install
+before_script:
+  - cd backend/pima
+  - python manage.py migrate
+script:
+  - coverage run --source='.' manage.py test --settings=pima.settings.test
+  - npm run test-coverage
+  - npm run lint
+after_success:
+  - coveralls
+deploy:
+  - bash .travis/deploy.sh
+
 notifications:
   slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
