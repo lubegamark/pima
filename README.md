@@ -7,3 +7,11 @@
 [![Stories in Ready](https://badge.waffle.io/lubegamark/pima.png?label=ready&title=Ready)](http://waffle.io/lubegamark/pima)
 
 Air Quality Monitoring
+
+The Project is made up of 3 subfolder projects
+
+#### backend\
+#### frontend\
+#### iot\
+
+** Navigate to the different project subfolder READMEs to get instructions on how to set up the respective subprojects ** 
