@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {createSelector} from 'reselect';
 import {connect} from 'react-redux';
 import {BigCircularUI, SmallCircularUI, ListView} from '../components';

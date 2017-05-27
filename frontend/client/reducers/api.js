@@ -1,7 +1,10 @@
 import {FETCH_DATA, FETCH_DATA_FAILED, FETCH_DATA_FULFILLED} from '../constants';
 
 export default function apiReducer(state = {
-  data: [],
+  data: [{number: 4, timeStamp: '12-05-2017 21:23:09'},
+    {number: 3, timeStamp: '12-05-2017 21:23:09'},
+    {number: 7, timeStamp: '12-05-2017 21:23:09'},
+    {number: 6, timeStamp: '12-05-2017 21:23:09'}],
   fetching: false,
   fetched: false,
   error: null,
