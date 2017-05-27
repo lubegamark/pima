@@ -6,6 +6,9 @@ import json
 
 class SocketClient():
 
+    def __init_(self):
+        pass
+
     def on_message(self, ws, message):
         print message
 
