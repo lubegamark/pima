@@ -15,7 +15,7 @@ matrix:
       - coverage run --source='.' manage.py test --settings=pima.settings.test
     after_success:
       - coveralls
-      - bash .travis/deploy.sh
+
   include:
     language: node_js
     node_js:
