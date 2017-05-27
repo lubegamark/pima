@@ -1,7 +1,11 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import {createSelector} from 'reselect';
+import {connect} from 'react-redux';
 import {BigCircularUI, SmallCircularUI, ListView} from '../components';
 import {colors} from '../config/styles';
+import {data, listening, reading} from '../selectors';
+import {startListening} from '../actions';
 
 const styles = StyleSheet.create({
   topContainerView: {
@@ -15,10 +19,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Main extends React.Component {
+const mapStateToProps = createSelector(
+  [data, listening, reading],
+  (api, status, number) => ({
+    api,
+    status,
+    number,
+  }));
+
+class Main extends React.Component {
 
   componentWillMount() {
-
+    this.props.dispatch(startListening());
   }
 
   render() {
@@ -32,7 +44,7 @@ export default class Main extends React.Component {
           />
           <BigCircularUI
             color={colors.secondaryDark}
-            percentage={60}
+            percentage={this.props.number}
           />
           <SmallCircularUI
             color={colors.secondary}
@@ -49,3 +61,4 @@ export default class Main extends React.Component {
 
 }
 
+export default connect(mapStateToProps)(Main);
