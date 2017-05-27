@@ -16,6 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from . import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^devices/$', views.DeviceList.as_view()),
+    url(r'^devices/(?P<slug>[^/]+)/$', views.DeviceDetail.as_view()),
+    url(r'^devices/(?P<slug>[^/]+)/readings/$',
+        views.DeviceReadings.as_view()),
 ]
