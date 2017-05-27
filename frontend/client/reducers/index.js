@@ -1,7 +1,7 @@
 import api from './api';
 import readings from './readings';
 
-export {
+export default {
   api,
   readings,
 };
