@@ -25,7 +25,7 @@ class SocketClient():
                 content = raw_input("Please enter something: ")
                 data = json.dumps({"post": content})
                 print data
-                ws.send(data)
+                websocket.send(data)
             time.sleep(1)
             print "thread terminating..."
         thread.start_new_thread(run, ())
