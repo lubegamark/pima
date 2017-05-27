@@ -38,9 +38,9 @@ const BigCircularUI = (props) =>
     backgroundColor={colors.grey}
   >
     {
-                    () => (
+                    (fill) => (
                       <View style={styles.textContainerBigCircle}>
-                        <Text style={styles.pointsBigCircle}>10</Text>
+                        <Text style={styles.pointsBigCircle}>{fill}</Text>
                         <Text style={styles.textBigCircle}>CURRENT</Text>
                       </View>
                     )

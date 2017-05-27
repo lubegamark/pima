@@ -1,7 +1,8 @@
+import {combineReducers} from 'redux';
 import api from './api';
 import readings from './readings';
 
-export default {
+export default combineReducers({
   api,
   readings,
-};
+});
