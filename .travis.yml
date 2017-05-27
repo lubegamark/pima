@@ -22,7 +22,7 @@ install:
 before_script:
   - cd ../backend/pima
   - psql -c 'create database test;' -U postgres
-  - python manage.py migrate
+  - python manage.py migrate --settings=pima.settings.test
 script:
   - coverage run --source='.' manage.py test --settings=pima.settings.test
   - cd ../../frontend/
