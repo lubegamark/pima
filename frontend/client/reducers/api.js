@@ -25,6 +25,7 @@ export default function apiReducer(state = {
       };
     }
     case FETCH_DATA_FULFILLED: {
+
       return {
         ...state,
         fetching: false,

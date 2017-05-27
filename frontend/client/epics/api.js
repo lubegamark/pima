@@ -1,12 +1,15 @@
+import moment from 'moment';
 import {FETCH_DATA_FULFILLED, FETCH_DATA} from '../constants';
+import {dataUrl} from '../config';
+
 
 const fetchDataEpic = (action$, none, {getJSON}) =>
   action$.ofType(FETCH_DATA)
     .mergeMap(() =>
-      getJSON('/api/readings')
+      getJSON(dataUrl)
         .map(response => ({
           type: FETCH_DATA_FULFILLED,
-          payload: response,
+          payload: {number: response.value, timeStamp: moment().format()},
         }))
     );
 

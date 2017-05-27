@@ -1,10 +1,11 @@
 import {ActionsObservable} from 'redux-observable';
 import {Observable} from 'rxjs/Observable';
+import moment from 'moment';
 import 'rxjs';
 import api from '../../client/epics/api';
 import * as types from '../../client/constants';
 
-const mockResponse = {name: 'Bilbo Baggins'};
+const mockResponse = {value: 1};
 const action$ = ActionsObservable.of({type: types.FETCH_DATA});
 const store = null; // not needed for this epic
 const dependencies = { getJSON: url =>Observable.of(mockResponse) };
@@ -17,7 +18,7 @@ describe('api epic', () => {
       .subscribe(actions => {
         expect(actions).toEqual([{
           type: types.FETCH_DATA_FULFILLED,
-          payload: mockResponse,
+          payload: {number: mockResponse.value, timeStamp: moment().format()},
         }])
   });
 });
