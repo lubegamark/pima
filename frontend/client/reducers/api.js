@@ -29,7 +29,7 @@ export default function apiReducer(state = {
         ...state,
         fetching: false,
         fetched: true,
-        data: action.payload.data
+        data: action.payload.data,
       };
     }
     default: {
