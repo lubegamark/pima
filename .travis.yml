@@ -6,19 +6,20 @@ node_js:
 python:
   - "2.7"
 before_install:
-  - sudo apt-get -y install python3-pip python-dev
-  - sudo pip3 install -U setuptools
-  - sudo pip3 install -U virtualenvwrapper
+  - sudo apt-get -y install python-pip python-dev
+  - sudo pip install -U setuptools
+  - sudo pip install -U virtualenvwrapper
 install:
   - pip install -r backend/pima/requirements.txt
   - pip install coveralls
   - cd frontend
   - npm install
 before_script:
-  - cd backend/pima
+  - cd ../backend/pima
   - python manage.py migrate
 script:
   - coverage run --source='.' manage.py test --settings=pima.settings.test
+  - cd ../../frontend/
   - npm run test-coverage
   - npm run lint
 after_success:
