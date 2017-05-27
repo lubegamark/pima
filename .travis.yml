@@ -15,12 +15,7 @@ matrix:
       - coverage run --source='.' manage.py test --settings=pima.settings.test
     after_success:
       - coveralls
-    deploy:
-      skip_cleanup: true
-      provider: script
-      script: .travis/deploy.sh
-      on:
-        all_branches: true
+      - bash .travis/deploy.sh
   include:
     language: node_js
     node_js:
