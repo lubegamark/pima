@@ -26,5 +26,20 @@ matrix:
       - npm run test-coverage
       - npm run lint
 
+  include:
+    language: python
+    python:
+      - "2.7"
+    install:
+      - pip install -r iot/client/requirements.txt
+      - pip install coveralls
+    before_script:
+      - cd io/client
+      - python socket_client.py 
+    script:
+      - coverage run --source='.' tests/test_socket_client_unittest.py
+    after_success:
+      - coveralls
+
 notifications:
   slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
