@@ -10,6 +10,7 @@
     "lint:fix": "eslint --fix client"
   },
   "dependencies": {
+    "moment": "^2.18.1",
     "react": "15.4.1",
     "react-native": "0.39.2",
     "react-native-circular-progress": "0.0.8",
