@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pima',
-    'channels'
+    'channels',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
