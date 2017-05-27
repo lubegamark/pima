@@ -11,8 +11,9 @@ services:
     container_name: django-1
     command: >
               bash -c "chmod +x wait-for-it.sh; ./wait-for-it.sh db:5432 --
-              && python manage.py migrate &&
-              gunicorn pima.wsgi -b 0.0.0.0:8000"
+              python manage.py collectstatic --noinput &&
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db
       - redis
@@ -20,11 +21,13 @@ services:
       - .:/src
     expose:
       - "8000"
+    ports:
+      - "8000:8000"
   nginx:
     image: nginx:1.13.0
     container_name: nginx-1
-    ports:
-      - "8000:8000"
+#    ports:
+#      - "8000:8000"
     volumes:
       - .:/src
       - ./config/nginx:/etc/nginx/conf.d
