@@ -1,0 +1,3 @@
+rootProject.name = 'pima'
+
+include ':app'

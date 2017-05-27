@@ -33,12 +33,12 @@ const mapStateToProps = createSelector(
 class Main extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(startListening());
+    // this.props.dispatch(startListening());
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.number !== this.props.number) {
-      this.props.dispatch(storeReading(nextProps.number));
+      // this.props.dispatch(storeReading(nextProps.number));
     }
   }
   render() {
