@@ -25,12 +25,11 @@ export default function apiReducer(state = {
       };
     }
     case FETCH_DATA_FULFILLED: {
-
       return {
         ...state,
         fetching: false,
         fetched: true,
-        data: action.payload.data,
+        data: action.payload,
       };
     }
     default: {

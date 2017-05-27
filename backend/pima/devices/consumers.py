@@ -6,7 +6,7 @@ import json
 
 from channels import Group
 
-from .models import Device, Reading
+from devices.models import Device, Reading
 
 
 def connect_device(message, slug):

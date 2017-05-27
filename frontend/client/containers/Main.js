@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {BigCircularUI, SmallCircularUI, ListView} from '../components';
 import {colors} from '../config/styles';
 import {data, listening, reading, maximumReading, minimumReading} from '../selectors';
-import {startListening, storeReading} from '../actions';
+import {startListening, storeReading, fetchData} from '../actions';
 
 const styles = StyleSheet.create({
   topContainerView: {
@@ -34,6 +34,7 @@ class Main extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(startListening());
+    this.props.dispatch(fetchData());
   }
 
   componentWillReceiveProps(nextProps) {

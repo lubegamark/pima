@@ -15,6 +15,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [('172.21.0.2', 6379)],
         },
-        'ROUTING': 'pima.routing.channel_routing',
+        'ROUTING': 'devices.routing.channel_routing',
     }
 }
