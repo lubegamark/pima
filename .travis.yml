@@ -23,8 +23,8 @@ script:
   - npm run lint
 after_success:
   - coveralls
-deploy:
-  - bash .travis/deploy.sh
+#deploy:
+#  - bash .travis/deploy.sh
 
 notifications:
   slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
