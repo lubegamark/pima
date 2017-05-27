@@ -18,6 +18,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [('redis', 6379)],
         },
-        'ROUTING': 'pima.routing.channel_routing',
+        'ROUTING': 'devices.routing.channel_routing',
     }
 }

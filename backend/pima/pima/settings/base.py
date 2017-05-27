@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pima',
+    'devices',
     'channels',
     'rest_framework',
 ]
@@ -136,6 +137,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [('redis', 6379)],
         },
-        'ROUTING': 'pima.routing.channel_routing',
+        'ROUTING': 'devices.routing.channel_routing',
     }
 }
