@@ -33,14 +33,14 @@ const BigCircularUI = (props) =>
   <AnimatedCircularProgress
     size={150}
     width={15}
-    fill={props.percentage}
+    fill={Math.round(100 * (props.percentage / 10))}
     tintColor={props.color}
     backgroundColor={colors.grey}
   >
     {
                     (fill) => (
                       <View style={styles.textContainerBigCircle}>
-                        <Text style={styles.pointsBigCircle}>{fill}</Text>
+                        <Text style={styles.pointsBigCircle}>{Math.round(fill)}</Text>
                         <Text style={styles.textBigCircle}>CURRENT</Text>
                       </View>
                     )
