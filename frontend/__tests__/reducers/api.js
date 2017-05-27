@@ -9,9 +9,9 @@ const data = {
       {number: 6, timeStamp: '2017-05-26T11:25:49+03:00'}],
     fetching: false,
     fetched: false,
-    error: null
+    error: null,
   }
-describe('todos reducer', () => {
+describe('api reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
