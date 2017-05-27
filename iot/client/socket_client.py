@@ -6,6 +6,9 @@ import json
 
 class SocketClient():
 
+    def __init_(self):
+        pass
+
     def on_message(self, ws, message):
         print message
 
@@ -22,7 +25,7 @@ class SocketClient():
                 content = raw_input("Please enter something: ")
                 data = json.dumps({"post": content})
                 print data
-                ws.send(data)
+                websocket.send(data)
             time.sleep(1)
             print "thread terminating..."
         thread.start_new_thread(run, ())
