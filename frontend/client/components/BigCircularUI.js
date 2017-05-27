@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: fontSize.veryBig,
     fontWeight: 'bold',
+    color: colors.black,
   },
   textBigCircle: {
     backgroundColor: 'transparent',

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import {View, StyleSheet, Text} from 'react-native';
 import {colors, fontSize} from '../config/styles';
 
@@ -6,8 +7,8 @@ const styles = StyleSheet.create({
   listItemContainer: {
     paddingLeft: 16,
     paddingRight: 16,
-    paddingBottom: 8,
-    paddingTop: 8,
+    paddingBottom: 12,
+    paddingTop: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -33,14 +34,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = () => <View style={styles.listItemContainer}>
+const ListItem = (props) => <View style={styles.listItemContainer}>
   <View style={styles.textContainer}>
     <Text style={styles.topText}>
-        2 seconds ago
+      {moment(props.reading.timeStamp).fromNow()}
     </Text>
-    <Text style={styles.bottomText}>15/07/201721:23:09</Text>
+    <Text style={styles.bottomText}>{moment(props.reading.timeStamp).format()}</Text>
   </View>
-  <Text style={styles.mainText}>0.08</Text>
+  <Text
+    style={[styles.mainText, {color: props.color}]}
+  > {Math.round(100 * (props.reading.number / 10))}
+  </Text>
 </View>;
 
 
