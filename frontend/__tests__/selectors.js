@@ -24,6 +24,9 @@ describe('selectors', () => {
     expect(listening(state)).toBe(state.readings.listening);
   });
   it('return minimum reading', () => {
-    expect(minimumReading.resultFunc(state.api.data)).toBe(4);
+    expect(minimumReading.resultFunc(state.api.data)).toBe(3);
+  });
+  it('return maximum reading', () => {
+    expect(maximumReading.resultFunc(state.api.data)).toBe(7);
   });
 });
