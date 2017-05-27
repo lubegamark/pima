@@ -8,4 +8,17 @@ describe('actions', () => {
     }
     expect(actions.startListening()).toEqual(expectedAction);
   })
+  it('should create an action to start fetching', () => {
+    const expectedAction = {
+      type: types.FETCH_DATA,
+    }
+    expect(actions.fetchData()).toEqual(expectedAction);
+  })
+  it('should create an action to store reading', () => {
+    const expectedAction = {
+      type: types.STORE_READING,
+      payload:1,
+    }
+    expect(actions.fetchData(1)).toEqual(expectedAction);
+  })
 })
