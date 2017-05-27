@@ -1,3 +1,8 @@
-/**
- * Created by kraiba on 27/05/2017.
- */
+import {START_LISTENING, FETCH_DATA} from '../constants';
+
+export const startListening = () => ({
+  type: START_LISTENING,
+});
+export const fetchData = () => ({
+  type: FETCH_DATA,
+});
