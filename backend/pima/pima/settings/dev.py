@@ -8,4 +8,13 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-INSTALLED_APPS += ("debug_toolbar",)
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('172.21.0.2', 6379)],
+        },
+        'ROUTING': 'pima.routing.channel_routing',
+    }
+}
