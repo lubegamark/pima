@@ -12,7 +12,7 @@ matrix:
       - cd backend/pima
       - python manage.py migrate
     script:
-      - coverage run --source='.' manage.py test
+      - coverage run --source='.' manage.py test --settings=pima.settings.test
     after_success:
       - coveralls
   include:
