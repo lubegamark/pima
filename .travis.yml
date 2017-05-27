@@ -26,5 +26,5 @@ matrix:
       - npm run test-coverage
       - npm run lint
 
-  notifications:
-    slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
+notifications:
+  slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK

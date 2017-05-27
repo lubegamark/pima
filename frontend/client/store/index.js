@@ -1,3 +1,7 @@
-/**
- * Created by kraiba on 27/05/2017.
- */
+import {createStore, applyMiddleware} from 'redux';
+import reducers from '../reducers';
+import epicMiddleware from '../epics';
+
+const store = createStore(reducers, applyMiddleware(epicMiddleware));
+
+export default store;

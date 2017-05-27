@@ -1,6 +1,6 @@
 import {FETCH_DATA, FETCH_DATA_FAILED, FETCH_DATA_FULFILLED} from '../constants';
 
-export default function chartsReducer(state = {
+export default function apiReducer(state = {
   data: [],
   fetching: false,
   fetched: false,
@@ -26,5 +26,5 @@ export default function chartsReducer(state = {
     }
 
   }
-
 }
+
