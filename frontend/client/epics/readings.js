@@ -9,7 +9,7 @@ const readings = (action$, none, {getSocket}) => action$.ofType(START_LISTENING)
     socket.onopen = () => {
     };
     socket.onmessage = (message) => {
-      observer.next(message);
+      observer.next(JSON.parse(message.data).value);
     };
 
     socket.onerror = (e) => {
