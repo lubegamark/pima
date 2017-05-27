@@ -39,6 +39,6 @@ addons:
             - sshpass
 after_success:
     - export SSHPASS=$DEPLOY_PASS
-    - sshpass -e ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST 'pwd > t.txt'
+    - sshpass -e ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
 notifications:
   slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
