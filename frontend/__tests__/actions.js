@@ -19,6 +19,6 @@ describe('actions', () => {
       type: types.STORE_READING,
       payload:1,
     }
-    expect(actions.fetchData(1)).toEqual(expectedAction);
+    expect(actions.storeReading(1)).toEqual(expectedAction);
   })
 })
