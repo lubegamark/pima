@@ -41,6 +41,6 @@
     "regenerator-runtime": "^0.10.5"
   },
   "jest": {
-    "transform": {}
+    "preset": "react-native"
   }
 }
