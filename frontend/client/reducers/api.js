@@ -3,10 +3,10 @@ import {STORE_READING, FETCH_DATA, FETCH_DATA_FAILED, FETCH_DATA_FULFILLED} from
 
 
 export default function apiReducer(state = {
-  data: [{number: 4, timeStamp: moment().subtract(1, 'days').format()},
-    {number: 3, timeStamp: moment().subtract(1, 'days').format()},
-    {number: 7, timeStamp: moment().subtract(1, 'days').format()},
-    {number: 6, timeStamp: moment().subtract(1, 'days').format()}],
+  data: [{number: 4, timeStamp: '2017-05-26T11:25:49+03:00'},
+    {number: 3, timeStamp: '2017-05-26T11:25:49+03:00'},
+    {number: 7, timeStamp: '2017-05-26T11:25:49+03:00'},
+    {number: 6, timeStamp: '2017-05-26T11:25:49+03:00'}],
   fetching: false,
   fetched: false,
   error: null,
