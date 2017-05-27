@@ -22,7 +22,7 @@ install:
   - npm install
 before_script:
   - cd ../backend/pima
-  - docker-compose up
+  - docker-compose up -d
 script:
   - coverage run --source='.' manage.py test --settings=pima.settings.test
   - cd ../../frontend/
