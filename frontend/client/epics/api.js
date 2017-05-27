@@ -1,4 +1,3 @@
-import moment from 'moment';
 import {FETCH_DATA_FULFILLED, FETCH_DATA} from '../constants';
 import {dataUrl} from '../config';
 
@@ -9,8 +8,8 @@ const fetchDataEpic = (action$, none, {getJSON}) =>
       getJSON(dataUrl)
         .map(response => ({
           type: FETCH_DATA_FULFILLED,
-          payload: {number: response.value, timeStamp: moment().format()},
-        }))
-    );
+          payload: response.map(item =>
+            ({number: parseInt(item.value, 0), timeStamp: item.timeStamp}))}))
+          );
 
 export default fetchDataEpic;

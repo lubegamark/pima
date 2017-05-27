@@ -43,7 +43,7 @@ describe('api reducer', () => {
     expect(
       reducer(undefined, {
         type: types.FETCH_DATA_FULFILLED,
-        payload: {data:data.data},
+        payload: data.data,
       })
     ).toEqual(
       {...data, fetching: false, fetched: true}
