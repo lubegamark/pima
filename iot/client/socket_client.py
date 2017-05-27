@@ -2,8 +2,7 @@ import websocket
 import thread
 import time
 import json
-
-
+from random import randint
 class SocketClient():
 
     def __init_(self):
@@ -20,21 +19,17 @@ class SocketClient():
 
     def on_open(self, ws):
         def run(*args):
-            for i in range(3):
-                time.sleep(1)
-                content = raw_input("Please enter something: ")
-                data = json.dumps({"post": content})
-                print data
-                websocket.send(data)
-            time.sleep(1)
-            print "thread terminating..."
+            while True:
+                time.sleep(5)
+                data = json.dumps({"post": randint(0,9)})
+                ws.send(data)
         thread.start_new_thread(run, ())
 
 
 if __name__ == "__main__":
     sock = SocketClient()
     websocket.enableTrace(True)
-    ws = websocket.WebSocketApp("ws://127.0.0.1:8000/device/dev1/stream/",
+    ws = websocket.WebSocketApp("ws://207.154.204.214:8000/devices/test-device-1/readings/stream/",
                                 on_message=sock.on_message,
                                 on_error=sock.on_error,
                                 on_close=sock.on_close)
