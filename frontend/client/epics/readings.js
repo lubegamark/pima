@@ -6,9 +6,19 @@ let socket;
 const readings = (action$, none, {getSocket}) => action$.ofType(START_LISTENING)
   .mergeMap(() => new Observable(observer => {
     socket = getSocket;
-    socket.on('message', (message) => {
-      observer.next(message);
-    });
+    socket.onopen = () => {
+    };
+    socket.onmessage = (message) => {
+      observer.next(JSON.parse(message.data).value);
+    };
+
+    socket.onerror = (e) => {
+      observer.error(e);
+    };
+
+    socket.onclose = (e) => {
+      observer.complete(e);
+    };
   })).takeUntil(
   action$.ofType(STOP_LISTENING)
     .filter(() => socket.close())

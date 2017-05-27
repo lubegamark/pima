@@ -1,10 +1,9 @@
 import {createEpicMiddleware} from 'redux-observable';
 import {ajax} from 'rxjs/observable/dom/ajax';
-import socketClient from 'socket.io-client';
 import rootEpic from './root';
+import {streamUrl} from '../config';
 
-const socket = socketClient('http://192.168.43.28:3000');
-
+const socket = new WebSocket(streamUrl);
 const epicMiddleware = createEpicMiddleware(rootEpic, {
   dependencies: {getJSON: ajax.getJSON, getSocket: socket},
 });
