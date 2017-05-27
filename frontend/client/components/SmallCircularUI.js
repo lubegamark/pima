@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: fontSize.medium,
     fontWeight: 'bold',
+    color: colors.black,
   },
   textSmallCircle: {
     backgroundColor: 'transparent',
@@ -33,15 +34,15 @@ export const SmallCircularUI = (props) =>
   <AnimatedCircularProgress
     size={80}
     width={10}
-    fill={props.percentage}
+    fill={Math.round(100 * (props.percentage / 10))}
     tintColor={props.color}
     backgroundColor={colors.grey}
   >
     {
-      () => (
+      (fill) => (
         <View style={styles.textContainerSmallCircle}>
-          <Text style={styles.pointsSmallCircle}>0.8</Text>
-          <Text style={styles.textSmallCircle}>MIN</Text>
+          <Text style={styles.pointsSmallCircle}>{Math.round(fill)}</Text>
+          <Text style={styles.textSmallCircle}>{props.text}</Text>
         </View>
       )
     }

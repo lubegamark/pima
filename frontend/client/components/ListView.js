@@ -1,21 +1,20 @@
 import React from 'react';
 import {ListView} from 'react-native';
 import ListItem from './ListItem';
+import {colors} from '../config/styles';
 
 export default class ListViewSample extends React.Component {
-  constructor() {
-    super();
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 4']),
-    };
-  }
+  renderItem = (item) => {
+    const color = item.number > 5 ? colors.primary : colors.secondary;
+    return <ListItem reading={item} color={color} />;
+  };
 
-  renderItem = () => <ListItem />
   render() {
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    const dataSource = ds.cloneWithRows(this.props.readings);
     return (
       <ListView
-        dataSource={this.state.dataSource}
+        dataSource={dataSource}
         renderRow={this.renderItem}
       />
     );

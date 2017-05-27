@@ -1,7 +1,12 @@
-import {FETCH_DATA, FETCH_DATA_FAILED, FETCH_DATA_FULFILLED} from '../constants';
+import moment from 'moment';
+import {STORE_READING, FETCH_DATA, FETCH_DATA_FAILED, FETCH_DATA_FULFILLED} from '../constants';
+
 
 export default function apiReducer(state = {
-  data: [],
+  data: [{number: 4, timeStamp: moment().subtract(1, 'days').format()},
+    {number: 3, timeStamp: moment().subtract(1, 'days').format()},
+    {number: 7, timeStamp: moment().subtract(1, 'days').format()},
+    {number: 6, timeStamp: moment().subtract(1, 'days').format()}],
   fetching: false,
   fetched: false,
   error: null,
@@ -12,6 +17,12 @@ export default function apiReducer(state = {
     }
     case FETCH_DATA_FAILED: {
       return {...state, fetching: false, error: action.error};
+    }
+    case STORE_READING: {
+      return {
+        ...state,
+        data: [{number: action.payload, timeStamp: moment().format()}, ...state.data],
+      };
     }
     case FETCH_DATA_FULFILLED: {
       return {
