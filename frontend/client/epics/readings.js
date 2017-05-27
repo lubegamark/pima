@@ -1,42 +1,19 @@
 import {Observable} from 'rxjs/Observable';
-import SocketIOClient from 'socket.io-client';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {createEpicMiddleware} from 'redux-observable';
+import socketClient from 'socket.io-client';
 import 'rxjs';
-const message = (state = 9, action) => {
-  switch (action.type) {
-    case 'MESSAGE':
-      return action.payload.message
-  }
+import {START_LISTENING, READING_RECEIVED, STOP_LISTENING} from '../constants';
 
-  return state;
-}
+const socket = socketClient('http://192.168.10.104:3000');
 
-const socket = SocketIOClient('http://192.168.10.104:3000');
+const readings = (action$) => action$.ofType(START_LISTENING)
+  .mergeMap(() => new Observable(observer => {
+    socket.emit('userJoined', null);
+    socket.on('message', (message) => {
+      observer.next(message);
+    });
+  })).takeUntil(
+  action$.ofType(STOP_LISTENING)
+    .filter(() => socket.close())
+).map(tick => ({type: READING_RECEIVED, payload: {message: tick}}));
 
-const stockTickerEpic = (action$, store) =>
-  action$.ofType('START')
-    .mergeMap(action => {
-      return new Observable(observer => {
-        socket.emit('userJoined', null);
-        socket.on('message', (message) =>
-        {
-          observer.next(message)
-        });
-      })
-    }).takeUntil(
-    action$.ofType('STOP')
-      .filter(closeAction => closeAction === action.payload.message)
-  ).map(tick => ({type: 'MESSAGE', payload:{message:tick}}));
-
-
-const epicMiddleware = createEpicMiddleware(stockTickerEpic);
-
-const reducers=combineReducers({
-  message,
-});
-export const store = createStore(
-  reducers,
-  applyMiddleware(epicMiddleware)
-);
-
+export default readings;
