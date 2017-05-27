@@ -2,38 +2,43 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '5.0.0'
+- 5.0.0
 python:
-  - "2.7"
+- '2.7'
 services:
-  - postgresql
-  - redis
+- postgresql
+- redis
 before_install:
-  - sudo apt-get update
-  - sudo apt-get -y install python-pip python-dev
-  - sudo pip install -U setuptools
-  - sudo pip install -U virtualenvwrapper
-
+- sudo apt-get update
+- sudo apt-get -y install python-pip python-dev
+- sudo pip install -U setuptools
+- sudo pip install -U virtualenvwrapper
 install:
-  - pip install -r backend/pima/requirements.txt
-  - pip install coveralls
-  - cd frontend
-  - npm install
+- pip install -r backend/pima/requirements.txt
+- pip install coveralls
+- cd frontend
+- npm install
 before_script:
-  - cd ../backend/pima
-  - psql -c 'create database test;' -U postgres
-  - python manage.py migrate --settings=pima.settings.test
+- cd ../backend/pima
+- psql -c 'create database test;' -U postgres
+- python manage.py migrate --settings=pima.settings.test
 script:
-  - coverage run --source='.' manage.py test --settings=pima.settings.test
-  - cd ../../frontend/
-  - npm run test-coverage
-  - npm run lint
+- coverage run --source='.' manage.py test --settings=pima.settings.test
+- cd ../../frontend/
+- npm run test-coverage
+- npm run lint
+env:
+  global:
+  - secure: jm+KMFd/6DpQjKiODqdOciQhuWA2bUm/BnHJWjVkBIHUhwevoxirzsDJC3JDxtJgofl2La1hgiBFTcHbonU0dMBNydLLVkJ6Y4h4pv97xdLypxvtLVOhhWOdRvi/0lP9AgFOBmMyglif/mO583OiRkx03LN3itR3vmpIaZfd+JkIxkyJE6OhAIYpZ2XRFmKArk1Hd6nlre9uCkzaQnjnaXMmlnhZm70BkoT3Bl47oXc4y/v0VIux/pebFSPQWZI9avoBZiILrqn+PGXwde5RpV7ZE64ax7h0Ooo0WdgjrWRzeMEXxv0SHUd4RGdNmPvXzjB09KinFXPzdAxXK2Sh+bvcHWVf61rBms3jQG+fLqK5qWcRcBfdhDU4/8ta2oOjg8GRHt+Fs97u9yP6q9RsWIRPyYyXxofuLzbovvGWv669EGmbZR8AxunAevFLiP+cPAvNhZZ6ZmnN6XJdbMgRkC4SMbjPjQ6iWMhVqBEi3Ohj1jZ+wNQE5jL2Boq8Wv8xW/rBX5zNYhpaqbZVrTRiRy3Kj5rHuKMW5V3n7Pvg4opwDDsfZAjVr4jdW9uf8jxJZ9YNgcujYznp/yyexR+UXGjqWHh3A83gsGpvRF2hNZ6PUdHj/kMlynWkNzkLHshVzZ9ynFStgwcmzR80aRULZ6zXETgMGsxFgng/8fJXPfk=
+  - secure: YcnH0uSK5jKgnvc5w5+09vAyj4q2CwElxXksy46MQxvsZMrSEnv5xApcwpRQbmSZ7M9bMYCUifGPr9rgPeOnhAGUHBWQ+1+YOnlkARRLS1aDXm84AbxRc1RGZv7FscZAkWacQycoOTvFxji4WDG0ZjrHO1+SwtkQe6GBCKJUPQb3kgL4jlWj2XOopnf70Ir1vJ0PL2OezUIS1pz4ONIhcIHaN8Uzb1BP3GdrRAuZMqO4kpQYX6RD5+n+dK2Y+kerIlX8S6/R2qXBsd2sE8qwm8iUkf1cAMir6mdAH1cX6opdeJjvtyy+4zxDZV2q2AI76PhoPi3Nu1EB14PFzEs/fjlN8ZgZUccBnS3nmPVR9Phdyk6BHQoneSzIY93sq/ar1AoWt9z0/pgajIkXpNT4qIJx2RtkFTGdLkgBuwfH/Si7dghvLK+zOx9GyKsxeQgrvlOS+rVqMCYcMHtaG0hCAIh8+JJexxuxxa/Vi13wqNersm69ucn3nqKP+9myGL/WmLy/0/vfX5RnbSWbJKqVladZxtjrvNbtJlRGWG/lUNJCPlBTbCl4fhFuDCiCLuf19DQUy2hUszNXBDHM1sTdjr/hjkJ4rvVwTsEAJyjBM9PHu5tEsQb3sEHPDoiCRMj4YcMboU2eWfj3GBnOBMnkDjnz3CNzka9+1B12GDt5008=
+  - secure: vlKqsjm8F4wFeFrLXqr99o3xlpUYpunNHCZx9cth0X+8Dt9regwtu24rdo2jSbiB5g52KtzehXP9xPkEiB/ahEB/H4CNUY+4alF4+BmvDTdwtPWU+KEPi40GpvDbwTh7CZU2k7QSTJ8cN/u8yV4GFU37KrFNygGoU2Gpa3hUTTph3phi8lrAdNPHozgng8VoardKD/aWuIBn+cRbDtFMVILj1Qk3Xjhxlbsn6svM4mEw0LNL4oCND2CCL7PrdVmkQh28DiA4OL/WqQ7EtG1yFiXSPKA/LRrlumBhvK65ZbZsvc0dUxC+BLlac4ywVgjF7qraktH7OULLXAoL6h60ftr0aafZyovFAQQQ7tMhGrzYzBrsxKwePgQppGv7WcKzJoFfUZnPWmwJm8Hihzu8uUevATewHqxY0e3HlZhFW0C1gBbgFunzVRduNSt+oCYG2tK8MvhFqQ3DvWvIglcvLG2I2oKvbDJOq92xuktur0xI9q07g/UqG07cdLk7VI3nhn6XFbsrVqB41C3S842LMDCzZaZJmpMsCwQeQwcIQAQoaj3CA7R7FlChEontvQPsI+UV+ZJXhI60r0UJbI8DD/xZE3NoUqe8yAbhUJbCYk14+7LpVCJYwo/vX9gRDjDbQDwUgmkzAuBniD/OwfyHRyUvP85P2woeys7vfFJ+U1k=
+  - secure: vbZcGt+XBje5PPFnooZXU4P7vNr588Hoi6NwtEXtfqZlYtFOJG2tq8WEf1d+noDuUIO1rkMBSMNWk2vKed3CUhbbKRmfXMkHlJrcPW3qfQHIOOhQExRGUJbm0lNEWV8eL3I1Xqe8fUIFQWL7W+Vg1TxqxfrI+0VG26N5FXD9IFuhPKxVi67SBaEQSn6zV2Uy7+NZpmiIAmfKmYQ1XCD7HAKKllaBT1PVfNwvu+GxXitQFhRUWYFh5KfozRxO3ekHj40bQveC3tfImbF53yI2fET7l2IKH3dr+CsHHUGxH6DFz52rtAdYaVc1NHVIBXUKuUCmnjSEPFIWPLtM3zSRadYJiJ55iv2ZpxBpuWtRsZdPExki7ODht6ub9B3L4rz2j5jE1EgjldnGZGjycoVtQvuQ5sUOziBl4ZBWrFqyhVUQZGt4abSAqmh04NWfslgEIe1wU3no96UGWMaLsnysogW8Sb1WDB2P7o4oY8fRKA45ryb0b7kwtWOn7FCSyUYRCyc82AwTruJqO/gq64okvDNjO2NBNJcxT4h9kt78oKqdklyKysd6cfPiWAV+4Yo7fru7pAhiGH0MvDNeIZAyAI9I9x6Qm2I/DMhYVgPoQ7KJjNFUvNWZetexutjYdL/8kQzm6nnGcGaOnLtmO7sidr0n1WRBsXtq4VswcB89Q8Y=
+addons:
+    apt:
+        packages:
+            - sshpass
 after_success:
-    - coveralls-lcov -v -n frontend/coverage/lcov.info > js_coverage.json
-    - coveralls --merge=js_coverage.json
-
-#deploy:
-#  - bash .travis/deploy.sh
-
+    - export SSHPASS=$DEPLOY_PASS
+    - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH 'pwd'
 notifications:
   slack: kaweddemu:wPmFWij7VXKuAqhjDKbTs6TK
