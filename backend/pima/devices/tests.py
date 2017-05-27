@@ -1,7 +1,11 @@
+from channels import Channel
+from channels.test import ChannelTestCase
 from django.db import IntegrityError
 from django.test import TestCase
 
-from devices.models import Device
+from devices.models import Device, Reading
+
+from devices.consumers import connect_device
 
 
 class TestDevice(TestCase):
@@ -37,5 +41,20 @@ class TestDevice(TestCase):
                                   longitude=0.256)
 
 
+class TestReading(TestCase):
+    def setUp(self):
+        Device.objects.create(name="dev1", latitude=0.236,
+                              longitude=0.0036)
 
+    def test_add_reading(self):
+        dev1 = Device.objects.get(name="dev1")
+        Reading.objects.create(value=12, device=dev1)
+        Reading.objects.create(value=12, device=dev1)
+        Reading.objects.create(value=12, device=dev1)
+        readings = Reading.objects.all()
+        self.assertEqual(readings.count(), 3)
 
+    def test_add_reading_without_device_fails(self):
+        dev1 = Device.objects.get(name="dev1")
+        with self.assertRaises(IntegrityError):
+            Reading.objects.create(value=54)
