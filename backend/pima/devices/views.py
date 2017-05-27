@@ -1,6 +1,6 @@
 from rest_framework import generics
 
-from .models import Device, Reading
+from devices.models import Device, Reading
 from .serializers import DeviceSerializer, ReadingSerializer
 
 

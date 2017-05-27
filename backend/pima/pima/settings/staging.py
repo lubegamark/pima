@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['207.154.204.214:8000', '207.154.204.214']
 DATABASES = {
     'default': {
@@ -18,6 +18,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [('redis', 6379)],
         },
-        'ROUTING': 'pima.routing.channel_routing',
+        'ROUTING': 'devices.routing.channel_routing',
     }
 }

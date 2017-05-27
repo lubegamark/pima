@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import Device, Reading
+from devices.models import Reading, Device
 
 admin.site.register(Device,
                     prepopulated_fields={"slug": ("name",)},)
