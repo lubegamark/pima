@@ -25,7 +25,7 @@ class SocketClient():
             while True:
                 read_serial = ser.readline()
                 print read_serial
-                if(len(read_serial) <= 3):                
+                if(len(read_serial) <= 3):
                     data = json.dumps({"post": (int(read_serial)/10000.0)*10})
                     ws.send(data)
         thread.start_new_thread(run, ())
@@ -34,9 +34,10 @@ class SocketClient():
 if __name__ == "__main__":
     sock = SocketClient()
     websocket.enableTrace(True)
-    ws = websocket.WebSocketApp("ws://207.154.204.214:8000/devices/test-device-1/readings/stream/",
-                                on_message=sock.on_message,
-                                on_error=sock.on_error,
-                                on_close=sock.on_close)
+    ws = websocket.WebSocketApp(
+        "ws://207.154.204.214:8000/devices/test-device-1/readings/stream/",
+        on_message=sock.on_message,
+        on_error=sock.on_error,
+        on_close=sock.on_close)
     ws.on_open = sock.on_open
     ws.run_forever()
