@@ -17,6 +17,8 @@ class ReadingSerializer(serializers.ModelSerializer):
     """
     A list of all readings recorded on a device
     """
+    timeStamp = serializers.DateTimeField(source='_created_at')
+
     class Meta:
         model = Reading
-        fields = ('id', 'value',)
+        fields = ('id', 'value', 'timeStamp')
