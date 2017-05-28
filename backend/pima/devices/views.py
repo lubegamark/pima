@@ -6,7 +6,7 @@ from .serializers import DeviceSerializer, ReadingSerializer
 
 class DeviceList(generics.ListCreateAPIView):
     """
-    A list of all devices 
+    A list of all devices
     New devices are registered here too
     """
     queryset = Device.objects.all()

@@ -53,7 +53,7 @@ class TestReading(TestCase):
         self.assertEqual(readings.count(), 3)
 
     def test_add_reading_without_device_fails(self):
-        dev1 = Device.objects.get(name="dev1")
+        Device.objects.get(name="dev1")
         with self.assertRaises(IntegrityError):
             Reading.objects.create(value=54)
 
@@ -63,10 +63,11 @@ class ChannelTests(ChannelTestCase):
         Device.objects.create(name="dev1", latitude=0.236, longitude=0.0036)
 
     def test_sending_websocket_message(self):
-        dev1 = Device.objects.get(name="dev1")
+        Device.objects.get(name="dev1")
         data = {"test": "bar"}
         Channel(unicode('a')).send(data)
-        received_message = self.get_next_message(unicode('a'), require=True).content
+        received_message = self.get_next_message(unicode('a'),
+                                                 require=True).content
         self.assertEqual(data, received_message)
 
     def test_group(self):

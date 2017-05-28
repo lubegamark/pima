@@ -1,6 +1,6 @@
 import json
 
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 # Using the standard RequestFactory API to create a form POST request
 from devices.models import Device, Reading
 from django.test import Client
