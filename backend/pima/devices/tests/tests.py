@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from devices import Device
+from devices.models import Device
 
 
 class TestDevice(TestCase):
