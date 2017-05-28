@@ -24,6 +24,7 @@ before_script:
 - python manage.py migrate --settings=pima.settings.test
 script:
 - coverage run --source='.' manage.py test --settings=pima.settings.test
+- flake8
 - cd ../../frontend/
 - npm run test-coverage
 - npm run lint
