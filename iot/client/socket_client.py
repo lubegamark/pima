@@ -25,7 +25,7 @@ class SocketClient():
             while True:
                 read_serial = ser.readline()
                 print read_serial
-                if(len(read_serial) <= 3):                
+                if(len(read_serial) <= 6):                
                     data = json.dumps({"post": (int(read_serial)/10000.0)*10})
                     ws.send(data)
         thread.start_new_thread(run, ())
