@@ -5,9 +5,9 @@ export const data = (state) => state.api.data;
 export const listening = (state) => state.readings.listening;
 
 export const maximumReading = createSelector([data], (d) =>
-  d.slice(Math.max(d.length - 10, 1)).map(item => item.number).reduce((a, b) => Math.max(a, b), 0)
+  d.slice(0,10).map(item => item.number).reduce((a, b) => Math.max(a, b), 0)
 );
 
 export const minimumReading = createSelector([data], (d) =>
-  d.slice(Math.max(d.length - 10, 1)).map(item => item.number).reduce((a, b) => Math.min(a, b), 10)
+  d.slice(0,10).map(item => item.number).reduce((a, b) => Math.min(a, b), 10)
 );
