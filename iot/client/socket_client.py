@@ -1,8 +1,9 @@
 import websocket
 import thread
-import time
 import json
-from random import randint
+import serial
+
+
 class SocketClient():
 
     def __init_(self):
@@ -18,11 +19,15 @@ class SocketClient():
         print "### closed ###"
 
     def on_open(self, ws):
+        ser = serial.Serial('/dev/ttyACM0', 9600)
+
         def run(*args):
             while True:
-                time.sleep(5)
-                data = json.dumps({"post": randint(0,9)})
-                ws.send(data)
+                read_serial = ser.readline()
+                print read_serial
+                if(len(read_serial) <= 3):                
+                    data = json.dumps({"post": (int(read_serial)/10000.0)*10})
+                    ws.send(data)
         thread.start_new_thread(run, ())
 
 
