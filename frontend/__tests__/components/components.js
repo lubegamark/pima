@@ -21,5 +21,11 @@ describe('actions', () => {
     );
   });
 
+  it('List Item renders correctly', () => {
+    const tree = renderer.create(
+      <ListItem/>
+    );
+  });
+
 
 })
