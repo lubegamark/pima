@@ -1,3 +1,3 @@
-import ReactNative from 'react-native';
+import {AppRegistry} from 'react-native';
 import Main from './client';
-ReactNative.AppRegistry.registerComponent('pima', () => Main);
+AppRegistry.registerComponent('pima', () => Main);

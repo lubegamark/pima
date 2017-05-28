@@ -9,10 +9,10 @@ import {startListening, storeReading, fetchData} from '../actions';
 
 const styles = StyleSheet.create({
   topContainerView: {
-    paddingLeft: 32,
-    paddingRight: 32,
-    paddingTop: 64,
-    paddingBottom: 64,
+    paddingLeft: 18,
+    paddingRight: 18,
+    paddingTop: 56,
+    paddingBottom: 56,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -43,7 +43,10 @@ class Main extends React.Component {
     }
   }
   render() {
-    const {number, min, max} = this.props;
+    let {number, min, max} = this.props;
+    min = min ? min :0;
+    max = max ? max :0;
+    number = number ? number :0;
 
     const mainColor = number > 5 ? colors.secondaryDark : colors.primaryDark;
     return (
