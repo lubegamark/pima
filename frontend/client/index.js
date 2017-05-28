@@ -5,7 +5,6 @@ import store from './store';
 
 export default class Index extends React.Component {
   componentWillMount() {
-
   }
 
   render() {
