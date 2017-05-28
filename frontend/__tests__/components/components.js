@@ -27,5 +27,11 @@ describe('actions', () => {
     );
   });
 
+  it('List View renders correctly', () => {
+    const tree = renderer.create(
+      <ListView/>
+    );
+  })
 
-})
+
+});
