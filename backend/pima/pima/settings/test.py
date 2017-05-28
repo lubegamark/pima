@@ -4,11 +4,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -18,6 +15,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [('localhost', 6379)],
         },
-        'ROUTING': 'pima.routing.channel_routing',
+        'ROUTING': 'devices.routing.channel_routing',
     }
 }
