@@ -39,7 +39,9 @@ const ListItem = (props) => <View style={styles.listItemContainer}>
     <Text style={styles.topText}>
       {moment(props.reading.timeStamp).fromNow()}
     </Text>
-    <Text style={styles.bottomText}>{moment(props.reading.timeStamp).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+    <Text style={styles.bottomText}>
+      {moment(props.reading.timeStamp).format('MMMM Do YYYY, h:mm:ss a')}
+    </Text>
   </View>
   <Text
     style={[styles.mainText, {color: props.color}]}
