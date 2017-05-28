@@ -1,11 +1,9 @@
-from channels import Channel, Group
-
+from channels import Group, Channel
 from channels.test import ChannelTestCase
-from django.db import IntegrityError
+from django.db.utils import IntegrityError
 from django.test import TestCase
 
 from devices.models import Device, Reading
-from devices.consumers import connect_device
 
 
 class TestDevice(TestCase):
