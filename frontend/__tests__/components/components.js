@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import Main from '../../client/components/BigCircularUI';
+import BigCircularUI from '../../client/components/BigCircularUI';
 import SmallCircularUI from '../../client/components/SmallCircularUI';
 import ListItem from '../../client/components/ListItem';
 import ListView from '../../client/components/ListView';
@@ -15,10 +15,11 @@ describe('actions', () => {
     );
   });
 
-  it('Index renders correctly', () => {
+  it('Big Circle renders correctly', () => {
     const tree = renderer.create(
-      <Index/>
+      <BigCircularUI/>
     );
   });
+
 
 })
