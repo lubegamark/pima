@@ -43,11 +43,10 @@ class Main extends React.Component {
     }
   }
   render() {
-    const {number, min, max} = this.props;
     let {number, min, max} = this.props;
-    min = min ? min :0
-    max = max ? max :0
-    number = number ? number :0
+    min = min ? min :0;
+    max = max ? max :0;
+    number = number ? number :0;
 
     const mainColor = number > 5 ? colors.secondaryDark : colors.primaryDark;
     return (
