@@ -9,10 +9,10 @@ import {startListening, storeReading, fetchData} from '../actions';
 
 const styles = StyleSheet.create({
   topContainerView: {
-    paddingLeft: 32,
-    paddingRight: 32,
-    paddingTop: 64,
-    paddingBottom: 64,
+    paddingLeft: 18,
+    paddingRight: 18,
+    paddingTop: 56,
+    paddingBottom: 56,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
