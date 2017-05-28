@@ -6,7 +6,7 @@ from devices.models import Device, Reading
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ('id', 'name', 'location',)
+        fields = ('id', 'name', 'latitude', 'longitude', 'slug')
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'}
