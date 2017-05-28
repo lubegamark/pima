@@ -1,10 +1,10 @@
-from channels import Channel
+from channels import Channel, Group
+
 from channels.test import ChannelTestCase
 from django.db import IntegrityError
 from django.test import TestCase
 
 from devices.models import Device, Reading
-
 from devices.consumers import connect_device
 
 
@@ -58,3 +58,24 @@ class TestReading(TestCase):
         dev1 = Device.objects.get(name="dev1")
         with self.assertRaises(IntegrityError):
             Reading.objects.create(value=54)
+
+
+class ChannelTests(ChannelTestCase):
+    def setUp(self):
+        Device.objects.create(name="dev1", latitude=0.236, longitude=0.0036)
+
+    def test_sending_websocket_message(self):
+        dev1 = Device.objects.get(name="dev1")
+        data = {"test": "bar"}
+        Channel(unicode('a')).send(data)
+        received_message = self.get_next_message(unicode('a'), require=True).content
+        self.assertEqual(data, received_message)
+
+    def test_group(self):
+        # Add a test channel to a test group
+        Group("test-group").add(unicode("test-channel"))
+        # Send to the group
+        Group("test-group").send({"value": 42})
+        # Verify the message got into the destination channel
+        result = self.get_next_message(unicode("test-channel"), require=True)
+        self.assertEqual(result['value'], 42)
