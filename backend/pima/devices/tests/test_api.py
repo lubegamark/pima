@@ -6,8 +6,7 @@ from devices.models import Device, Reading
 from django.test import Client
 from rest_framework.renderers import JSONRenderer
 
-from backend.pima.devices.serializers import DeviceSerializer, \
-    ReadingSerializer
+from devices.serializers import DeviceSerializer, ReadingSerializer
 
 
 class TestDevices(TestCase):
