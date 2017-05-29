@@ -6,6 +6,7 @@ To setup the IOT subproject the following are required
 * MQ3 sensor
 * virtualenv or virtualenvwrapper
 * Python 2.7
+* Arduino Uno
 
 
 clone the repo\
